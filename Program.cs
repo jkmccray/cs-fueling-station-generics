@@ -1,36 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace GarysGarage
+namespace FuelingStations
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Zero fxs = new Zero(){
-                MainColor = "silver"
+            GasCar cessna = new GasCar(){
+                Name = "Cessna"
             };
-            Tesla modelS = new Tesla(){
-                MainColor = "turquoise"
+            GasCar ram = new GasCar(){
+                Name = "Ram"
             };
-            Cessna mx410 = new Cessna(){
-                MainColor = "purple"
+            ElectricCar leaf = new ElectricCar(){
+                Name = "Leaf"
             };
-            Ram truck = new Ram(){
-                MainColor = "red"
+            ElectricCar bolt = new ElectricCar(){
+                Name = "Bolt"
             };
 
-            fxs.Drive();
-            modelS.Drive();
-            mx410.Drive();
-            truck.Drive();
-            fxs.Turn("left");
-            modelS.Turn("right");
-            mx410.Turn("left");
-            truck.Turn("left");
-            fxs.Stop();
-            modelS.Stop();
-            mx410.Stop();
-            truck.Stop();
+            List<GasCar> gasCars = new List<GasCar>(){
+                cessna, ram
+            };
+
+            List<ElectricCar> electricCars = new List<ElectricCar>(){
+                leaf, bolt
+            };
+
+            BatteryStation batteryStation = new BatteryStation();
+
+            GasStation gasStation = new GasStation();
+
+            batteryStation.Refuel(electricCars);
+
+            gasStation.Refuel(gasCars);
+
         }
     }
 }
